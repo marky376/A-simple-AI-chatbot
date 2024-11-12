@@ -100,7 +100,7 @@ class SmartChatbot:
             user_input.endswith('?'),
             any(word.lower() in question_words for word, tag in tagged_tokens),
             any(pattern in user_input.lower() for qtype in self.knowledge_base['questions']
-                for patter in seld.knowledge_base['questions'][qtype]['patterns'])
+                for patter in self.knowledge_base['questions'][qtype]['patterns'])
         ])
         if not is_question:
             return None, None
