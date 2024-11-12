@@ -26,7 +26,7 @@ class SmartChatbot:
                 'responses': [
                     "Hi there! How can I help you roday?",
                     "Hello Nice to meet you! How can I help you today?",
-                    "Hey! WHat's on your ind today?"
+                    "Hey! WHat's on your mind today?"
                 ]
             },
             'questions': {
@@ -41,8 +41,8 @@ class SmartChatbot:
                 'how': {
                     'patterns': ['howdo', 'how can', 'how does'],
                     'responses': [
-                        "Here's a wat to approach {topic}...",
-                        "when dealing with {topic}, you might want to...",
+                        "Here's a way to approach {topic}...",
+                        "When dealing with {topic}, you might want to...",
                         "The process for {topic} typically involves..."
                     ]
                 },
@@ -50,8 +50,8 @@ class SmartChatbot:
                     'patterns': ['why is', 'why do', 'why does'],
                     'responses': [
                         "The reason for {topic} might be...",
-                        "thinking about {topic}, I believe...",
-                        "let me explain why {topic}..."
+                        "Thinking about {topic}, I believe...",
+                        "Let me explain why {topic}..."
                     ]
                 }
             },
