@@ -8,12 +8,13 @@ from nltk.tag import pos_tag
 import random
 import re
 
+
 # Downloading the required nltk data
 nltk.download('punkt_tab')
 nltk.download('stopwords')
 nltk.download('vader_lexicon')
 nltk.download('averaged_perceptron_tagger')
-
+nltk.download('averaged_perceptron_tagger_eng')
 
 # Creating the chatbot class/interface
 class SmartChatbot:
@@ -24,7 +25,7 @@ class SmartChatbot:
                 'patterns': ['hi', 'hello', 'hey', 'good morning', 'good evening', 'good afternoon'],
                 'responses': [
                     "Hi there! How can I help you roday?",
-                    "Hello Nice ro meet you! How can I help you today?",
+                    "Hello Nice to meet you! How can I help you today?",
                     "Hey! WHat's on your ind today?"
                 ]
             },
@@ -64,7 +65,7 @@ class SmartChatbot:
             }
         }
         self.sentiment_analyzer = SentimentIntensityAnalyzer()
-        self.stop_words = set(stopwords('english'))
+        self.stop_words = set(stopwords.words('english'))
 
 
     def tokenize_and_tag(self, user_input):
@@ -118,7 +119,7 @@ class SmartChatbot:
         # Checking for greetings and farewells first
         for category in ['greetings', 'farewell']:
             if any(pattern in user_input.lower() for pattern in self.knowledge_base[category]['patterns']):
-                return random.choice(self.knwledge_base[category]['responses'])
+                return random.choice(self.knowledge_base[category]['responses'])
 
         # Identifying question type and extracting topic
         q_type, topic = self.identify_question_type(user_input, tagged_tokens)
