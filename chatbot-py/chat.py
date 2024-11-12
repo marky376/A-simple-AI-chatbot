@@ -1,3 +1,4 @@
+from ast import pattern
 import string
 import nltk
 from nltk.tokenize import word_tokenize
@@ -109,4 +110,34 @@ class SmartChatbot:
                     topic = self.extract_topic(user_input.split(), q_type)
                     return q_type, topic
         return 'general', 'that'
-                
+    # Building the bots rudimentaty brain
+    def get_response(self, user_input):
+        """Generate a more thoughtful response based on imput type"""
+        tokens, tagged_tokens = self.tokenize_and_tag(user_input)
+
+        # Checking for greetings and farewells first
+        for category in ['greetings', 'farewell']:
+            if any(pattern in user_input.lower() for pattern in self.knowledge_base[category]['patterns']):
+                return random.choice(self.knwledge_base[category]['responses'])
+
+        # Identifying question type and extracting topic
+        q_type, topic = self.identify_question_type(user_input, tagged_tokens)
+        if q_type:
+            if q_type in self.knowledge_base['questions']:
+                template = random.choice(self.knowledge_base['questions'][q_type]['reponses'])
+                return template.format(topic=topic)
+            else:
+                # Handling general questions
+                return f"That's an interesting question about {topic} . Let me think..."
+            # If not a question, use sentiment analysis for response
+            sentiment = self.analyze_sentiment(user_input)
+            if sentiment > 0.2:
+                return "I sense enthusism! Tell me more about your thoughts on this."
+            elif sentiment < -0.2:
+                return "I understand this might be chalenging. Would you like to explore this further?"
+            else:
+                return "I see what you mean. Can you elaborate on that?"
+    def analyze_sentiment(self, text):
+        """Analyze the sentiment of the user input"""
+        scores = self.sentiment_analyzer.popularity_score(text)
+        return scores['compound']            
