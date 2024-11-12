@@ -1,3 +1,4 @@
+import string
 import nltk
 from nltk.tokenize import word_tokenize
 from nltk.sentiment import SentimentIntensityAnalyzer
