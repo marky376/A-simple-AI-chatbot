@@ -3,7 +3,7 @@ from nltk.tokenize import word_tokenize
 from nltk.sentiment import SentimentIntensityAnalyzer
 from nltk.corpus import stopwords
 from nltk.tag import pos_tag
-import stringimport random
+import random
 import re
 
 # Downloading the required nltk data
