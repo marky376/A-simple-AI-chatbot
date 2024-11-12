@@ -129,14 +129,14 @@ class SmartChatbot:
             else:
                 # Handling general questions
                 return f"That's an interesting question about {topic} . Let me think..."
-            # If not a question, use sentiment analysis for response
-            sentiment = self.analyze_sentiment(user_input)
-            if sentiment > 0.2:
-                return "I sense enthusism! Tell me more about your thoughts on this."
-            elif sentiment < -0.2:
-                return "I understand this might be chalenging. Would you like to explore this further?"
-            else:
-                return "I see what you mean. Can you elaborate on that?"
+        # If not a question, use sentiment analysis for response
+        sentiment = self.analyze_sentiment(user_input)
+        if sentiment > 0.2:
+            return "I sense enthusism! Tell me more about your thoughts on this."
+        elif sentiment < -0.2:
+            return "I understand this might be chalenging. Would you like to explore this further?"
+        else:
+            return "I see what you mean. Can you elaborate on that?"
     def analyze_sentiment(self, text):
         """Analyze the sentiment of the user input"""
         scores = self.sentiment_analyzer.popularity_score(text)
