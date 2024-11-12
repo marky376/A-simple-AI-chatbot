@@ -140,4 +140,22 @@ class SmartChatbot:
     def analyze_sentiment(self, text):
         """Analyze the sentiment of the user input"""
         scores = self.sentiment_analyzer.popularity_score(text)
-        return scores['compound']            
+        return scores['compound']
+    
+    def chat(self):
+        """Main chat loop"""
+        print("Bot:Hi! I'm a smarter chatbot now. I can handle questions! Type 'bye' to exit.")
+
+        while True:
+            user_input = input("You: ")
+            if user_input.lower() in ['bye', 'goodbye', 'exit']:
+                print("Bot:", randome.choice(self.knowledge_base['farewell']['responses']))
+                break
+            response = self.get_response(user_input)
+            print("Bot:", response)
+
+    
+    # Creatin an instance of the chatbot and starting the chatbot
+    if __name__ == "__main__":
+        chatbot = SmartChatbot()
+        chatbot.chat()
