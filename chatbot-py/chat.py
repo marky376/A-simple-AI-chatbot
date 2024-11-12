@@ -11,7 +11,7 @@ import re
 # Downloading the required nltk data
 nltk.download('punkt_tab')
 nltk.download('stopwords')
-nltk.downloads('vader_lexicon')
+nltk.download('vader_lexicon')
 nltk.download('averaged_perceptron_tagger')
 
 
