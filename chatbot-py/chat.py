@@ -149,13 +149,13 @@ class SmartChatbot:
         while True:
             user_input = input("You: ")
             if user_input.lower() in ['bye', 'goodbye', 'exit']:
-                print("Bot:", randome.choice(self.knowledge_base['farewell']['responses']))
+                print("Bot:", random.choice(self.knowledge_base['farewell']['responses']))
                 break
             response = self.get_response(user_input)
             print("Bot:", response)
 
     
-    # Creatin an instance of the chatbot and starting the chatbot
-    if __name__ == "__main__":
-        chatbot = SmartChatbot()
-        chatbot.chat()
+# Creating an instance of the chatbot and starting the chatbot
+if __name__ == "__main__":
+    chatbot = SmartChatbot()
+    chatbot.chat()
