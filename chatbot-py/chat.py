@@ -39,7 +39,7 @@ class SmartChatbot:
                     ]
                 },
                 'how': {
-                    'patterns': ['howdo', 'how can', 'how does'],
+                    'patterns': ['how do', 'how can', 'how does'],
                     'responses': [
                         "Here's a way to approach {topic}...",
                         "When dealing with {topic}, you might want to...",
