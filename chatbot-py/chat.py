@@ -1,21 +1,23 @@
+from ast import pattern
+import string
 import nltk
-import random
 from nltk.tokenize import word_tokenize
+from nltk.sentiment import SentimentIntensityAnalyzer
 from nltk.corpus import stopwords
 from nltk.tag import pos_tag
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
+import random
+import re
 
 
-# Downloading the required nltk data
 try:
-    nltk.download('punkt_tab')
+    nltk.download('punkt')
     nltk.download('stopwords')
     nltk.download('vader_lexicon')
     nltk.download('averaged_perceptron_tagger')
-    nltk.download('averaged_perceptron_tagger_eng')
+    print("NLTK resources downloaded successfully.")
 except Exception as e:
-    print(f"Warning: Failed to download NLTK data: {e}")
-    print("Some features may not work properly.")
+    print(f"Error downloading NLTK resources: {e}")
+    print("The chatbot may not function correctly without these resources.")
 
 # Creating the chatbot class/interface
 class SmartChatbot:
