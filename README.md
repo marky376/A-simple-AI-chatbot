@@ -32,8 +32,32 @@ To run this project, you'll need:
 ## Running the Chatbot
 1. Navigate to the project directory in your terminal.
 2. Run the script:
+
+   python chat.py
+
 3. Interact with the chatbot:
 - Type messages like "hi", "what is Python?", or "bye" to see how the chatbot responds.
 - To exit, type "bye", "goodbye", or "exit".
 
 ## Example Interaction
+
+Bot: Hi! I'm a smarter chatbot now. I can handle questions! Type 'bye' to exit.
+You: Hello
+Bot: Hello Nice to meet you! How can I help you today?
+You: What is Python?
+Bot: Regarding Python, I would say...
+You: Bye
+Bot: Goodbye! Have a great day!
+
+## Notes
+- The chatbot uses NLTK for tokenization, POS tagging, and sentiment analysis.
+- It has a basic knowledge base for greetings, questions, and farewells, but its responses are limited and may not handle complex inputs well.
+- Known issues:
+  - No error handling for failed NLTK downloads.
+  - Limited question-handling capabilities (e.g., struggles with multi-part questions).
+  - Typos in the code (e.g., `reponses` instead of `responses`).
+
+## Future Improvements
+- Add support for multi-turn conversations.
+- Improve sentiment analysis for more nuanced responses.
+- Add error handling for NLTK downloads and invalid inputs.
