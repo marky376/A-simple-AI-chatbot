@@ -1,20 +1,21 @@
-from ast import pattern
-import string
 import nltk
+import random
 from nltk.tokenize import word_tokenize
-from nltk.sentiment import SentimentIntensityAnalyzer
 from nltk.corpus import stopwords
 from nltk.tag import pos_tag
-import random
-import re
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 
 # Downloading the required nltk data
-nltk.download('punkt_tab')
-nltk.download('stopwords')
-nltk.download('vader_lexicon')
-nltk.download('averaged_perceptron_tagger')
-nltk.download('averaged_perceptron_tagger_eng')
+try:
+    nltk.download('punkt_tab')
+    nltk.download('stopwords')
+    nltk.download('vader_lexicon')
+    nltk.download('averaged_perceptron_tagger')
+    nltk.download('averaged_perceptron_tagger_eng')
+except Exception as e:
+    print(f"Warning: Failed to download NLTK data: {e}")
+    print("Some features may not work properly.")
 
 # Creating the chatbot class/interface
 class SmartChatbot:
@@ -125,7 +126,7 @@ class SmartChatbot:
         q_type, topic = self.identify_question_type(user_input, tagged_tokens)
         if q_type:
             if q_type in self.knowledge_base['questions']:
-                template = random.choice(self.knowledge_base['questions'][q_type]['reponses'])
+                template = random.choice(self.knowledge_base['questions'][q_type]['responses'])
                 return template.format(topic=topic)
             else:
                 # Handling general questions
@@ -140,7 +141,7 @@ class SmartChatbot:
             return "I see what you mean. Can you elaborate on that?"
     def analyze_sentiment(self, text):
         """Analyze the sentiment of the user input"""
-        scores = self.sentiment_analyzer.popularity_score(text)
+        scores = self.sentiment_analyzer.polarity_scores(text)
         return scores['compound']
     
     def chat(self):
