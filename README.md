@@ -32,3 +32,8 @@ To run this project, you'll need:
 ## Running the Chatbot
 1. Navigate to the project directory in your terminal.
 2. Run the script:
+3. Interact with the chatbot:
+- Type messages like "hi", "what is Python?", or "bye" to see how the chatbot responds.
+- To exit, type "bye", "goodbye", or "exit".
+
+## Example Interaction
